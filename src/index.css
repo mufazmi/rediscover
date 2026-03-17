@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 20% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+    --primary: 4 74% 49%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 220 20% 20%;
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 10% 46%;
+    --accent: 220 14% 92%;
+    --accent-foreground: 220 20% 15%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 4 74% 49%;
+    --radius: 0.5rem;
+
+    /* Rediscover custom tokens */
+    --sidebar-bg: 220 25% 11%;
+    --sidebar-fg: 220 10% 75%;
+    --sidebar-active: 4 74% 49%;
+    --sidebar-hover: 220 20% 16%;
+    --sidebar-border: 220 20% 18%;
+
+    --header-bg: 0 0% 100%;
+    --header-border: 220 13% 90%;
+
+    /* Key type colors */
+    --key-string: 217 91% 60%;
+    --key-list: 271 81% 56%;
+    --key-hash: 142 71% 45%;
+    --key-set: 25 95% 53%;
+    --key-zset: 45 93% 47%;
+    --key-stream: 330 81% 60%;
+    --key-geo: 174 72% 40%;
+    --key-hll: 200 80% 50%;
+    --key-bitmap: 280 60% 50%;
+
+    /* Status colors */
+    --status-success: 142 71% 45%;
+    --status-warning: 38 92% 50%;
+    --status-error: 0 84% 60%;
+    --status-info: 217 91% 60%;
+
+    /* Chart colors */
+    --chart-1: 4 74% 49%;
+    --chart-2: 217 91% 60%;
+    --chart-3: 142 71% 45%;
+    --chart-4: 25 95% 53%;
+    --chart-5: 271 81% 56%;
+
+    --sidebar-background: 220 25% 11%;
+    --sidebar-foreground: 220 10% 75%;
+    --sidebar-primary: 4 74% 49%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 16%;
+    --sidebar-accent-foreground: 220 10% 90%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 4 74% 49%;
+
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 220 10% 90%;
+    --card: 220 25% 11%;
+    --card-foreground: 220 10% 90%;
+    --popover: 220 25% 11%;
+    --popover-foreground: 220 10% 90%;
+    --primary: 4 74% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 16%;
+    --secondary-foreground: 220 10% 85%;
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 220 20% 18%;
+    --accent-foreground: 220 10% 90%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 4 74% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer utilities {
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+
+  /* Responsive logo utilities */
+  .logo-responsive {
+    @apply transition-all duration-300 object-contain;
+  }
+  
+  .logo-no-overflow {
+    @apply max-w-full h-auto;
+  }
+  
+  .logo-touch-target {
+    @apply min-w-[44px] min-h-[44px];
+  }
+  
+  /* Mobile-first responsive breakpoints for logos */
+  .logo-mobile {
+    @apply w-6 h-6 sm:w-8 sm:h-8;
+  }
+  
+  .logo-tablet {
+    @apply w-8 h-8 md:w-10 md:h-10;
+  }
+  
+  .logo-desktop {
+    @apply w-10 h-10 lg:w-12 lg:h-12;
+  }
+  
+  /* Prevent horizontal scroll on small screens */
+  .prevent-horizontal-scroll {
+    @apply max-w-full overflow-x-hidden;
+  }
+  
+  /* Touch-friendly spacing for mobile */
+  .touch-spacing {
+    @apply p-2 sm:p-3 md:p-4;
+  }
+}

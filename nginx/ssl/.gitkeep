@@ -1,0 +1,3 @@
+# This file ensures the ssl directory is tracked in git
+# SSL certificate files (cert.pem, key.pem) should be placed here
+# Do not commit actual certificate files to version control

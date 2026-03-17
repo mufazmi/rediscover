@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  # Nginx reverse proxy for development (different port)
+  nginx:
+    ports:
+      - "${NGINX_DEV_PORT:-8080}:80"  # Different port for development to avoid conflicts
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    networks:
+      - rediscover-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/nginx-health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 3s
+      start_period: 5s
+      retries: 3
+
+  # Frontend service for development - builds static files and runs dev server
+  frontend:
+    image: node:20-alpine
+    container_name: rediscover-frontend-dev
+    working_dir: /app
+    volumes:
+      - .:/app  # Source code for hot reload
+      - /app/node_modules
+      - frontend-dist:/app/dist-volume  # Share built files with nginx
+    ports:
+      - "${FRONTEND_DEV_PORT:-6378}:6378"  # Direct access for development
+    networks:
+      - rediscover-network
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - VITE_API_URL=${VITE_API_URL:-http://localhost:6377}
+    # Build static files for nginx and run dev server for hot reload
+    command: >
+      sh -c "npm ci && 
+             npm run build && 
+             mkdir -p /app/dist-volume &&
+             cp -r dist/* /app/dist-volume/ 2>/dev/null || true &&
+             echo 'Static files built for nginx' &&
+             npm run dev --host 0.0.0.0 --port 6378"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "test", "-f", "/app/dist-volume/index.html"]
+      interval: 30s
+      timeout: 3s
+      start_period: 15s  # Longer start period for development build
+      retries: 3
+
+  # Backend development server with hot reload
+  backend:
+    image: node:20-alpine
+    container_name: rediscover-backend-dev
+    working_dir: /app/backend
+    ports:
+      - "${BACKEND_DEV_PORT:-6377}:6377"  # Direct access for development
+    volumes:
+      - ./backend:/app/backend
+      - rediscover-data:/app/data
+      - /app/backend/node_modules
+    networks:
+      - rediscover-network
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - PORT=${PORT:-6377}
+      - DATABASE_PATH=${DATABASE_PATH:-/app/data/rediscover.db}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:6378}
+      - APP_SECRET=${APP_SECRET:-dev-secret-key-change-in-production}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN:-24h}
+      - BCRYPT_ROUNDS=${BCRYPT_ROUNDS:-10}
+    command: sh -c "npm ci && npm run dev"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:${PORT:-6377}/api/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 3s
+      start_period: 15s  # Longer start period for development build
+      retries: 3
+
+networks:
+  rediscover-network:
+    driver: bridge
+
+volumes:
+  rediscover-data:
+  frontend-dist:

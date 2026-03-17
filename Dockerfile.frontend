@@ -1,0 +1,37 @@
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy source code
+COPY . .
+
+# Build application
+ARG VITE_API_URL=""
+ENV VITE_API_URL=$VITE_API_URL
+
+RUN npm run build
+
+# Production stage
+FROM alpine:latest
+
+WORKDIR /app
+
+# Copy built files
+COPY --from=builder /app/dist ./dist
+
+# Create a simple script to copy files to volume and keep container running
+RUN echo '#!/bin/sh' > /entrypoint.sh && \
+    echo 'echo "Copying frontend files to shared volume..."' >> /entrypoint.sh && \
+    echo 'mkdir -p /app/dist-volume' >> /entrypoint.sh && \
+    echo 'cp -r /app/dist/* /app/dist-volume/ 2>/dev/null || true' >> /entrypoint.sh && \
+    echo 'echo "Frontend files copied successfully"' >> /entrypoint.sh && \
+    echo 'sleep infinity' >> /entrypoint.sh && \
+    chmod +x /entrypoint.sh
+
+CMD ["/entrypoint.sh"]

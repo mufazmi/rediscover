@@ -1,0 +1,2 @@
+# Services directory
+# Contains business logic services: auth, crypto, redis, scan

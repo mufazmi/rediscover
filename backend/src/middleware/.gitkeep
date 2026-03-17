@@ -1,0 +1,2 @@
+# Middleware directory
+# Contains Express middleware: auth, validation, rate limiting, error handling
