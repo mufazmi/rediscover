@@ -80,7 +80,6 @@ function parseInfoResponse(infoString: string): Record<string, Record<string, st
 
 /**
  * Analyze memory health
- * Requirement 1.8: Flag warning when used_memory > 80% of maxmemory
  */
 function analyzeMemory(info: Record<string, Record<string, string>>): HealthCheck {
   const memory = info.memory || {};
@@ -128,7 +127,6 @@ function analyzeMemory(info: Record<string, Record<string, string>>): HealthChec
 
 /**
  * Analyze persistence health
- * Requirement 1.9: Flag warning when both RDB and AOF are disabled
  */
 function analyzePersistence(info: Record<string, Record<string, string>>): HealthCheck {
   const persistence = info.persistence || {};
@@ -185,7 +183,6 @@ function analyzePersistence(info: Record<string, Record<string, string>>): Healt
 
 /**
  * Analyze performance health
- * Requirement 1.10: Flag warning when ops_per_sec high or hit rate < 80%
  */
 function analyzePerformance(info: Record<string, Record<string, string>>): HealthCheck {
   const stats = info.stats || {};
@@ -226,7 +223,6 @@ function analyzePerformance(info: Record<string, Record<string, string>>): Healt
 
 /**
  * Analyze connections health
- * Requirement 1.11: Flag warning when connected_clients approaches maxclients
  */
 function analyzeConnections(info: Record<string, Record<string, string>>): HealthCheck {
   const clients = info.clients || {};
@@ -264,7 +260,6 @@ function analyzeConnections(info: Record<string, Record<string, string>>): Healt
 
 /**
  * Analyze replication health
- * Requirement 1.12: Flag warning when lag > 1000ms
  */
 function analyzeReplication(info: Record<string, Record<string, string>>): HealthCheck {
   const replication = info.replication || {};
@@ -347,7 +342,6 @@ function analyzeReplication(info: Record<string, Record<string, string>>): Healt
 
 /**
  * Analyze security health
- * Requirement 1.13: Flag warning when requirepass not set or protected-mode disabled
  */
 async function analyzeSecurity(client: any): Promise<HealthCheck> {
   try {
@@ -411,7 +405,6 @@ async function analyzeSecurity(client: any): Promise<HealthCheck> {
 
 /**
  * Analyze keyspace health
- * Requirement 1.14: Flag warning for keys without TTL or expired keys accumulation
  */
 async function analyzeKeyspace(info: Record<string, Record<string, string>>): Promise<HealthCheck> {
   try {

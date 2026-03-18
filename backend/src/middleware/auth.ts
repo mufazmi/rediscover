@@ -19,8 +19,6 @@ export interface AuthRequest extends Request {
  * 
  * Extracts JWT from Authorization header, verifies it, and attaches user to request.
  * Returns 401 if token is missing or invalid.
- * 
- * Requirement 4.11: Authentication middleware
  */
 export function authenticate(
   req: AuthRequest,

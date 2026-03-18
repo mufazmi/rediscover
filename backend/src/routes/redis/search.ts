@@ -145,7 +145,6 @@ router.post(
 
 /**
  * Search by key names using SCAN with MATCH pattern
- * Requirement 7.3: Use SCAN with MATCH pattern for name search
  */
 async function searchByKeyNames(
   client: any,
@@ -208,7 +207,7 @@ async function searchByValues(
 ): Promise<SearchResult[]> {
   const results: SearchResult[] = [];
   let scannedCount = 0;
-  const maxKeysToScan = 1000; // Requirement 7.9: Limit to 1000 keys per db
+  const maxKeysToScan = 1000; 
 
   // Use SCAN to iterate keys
   let cursor = '0';
@@ -275,7 +274,6 @@ async function searchValueByType(
   try {
     switch (type) {
       case 'string': {
-        // Requirement 7.10: Use GET for STRING values
         const value = await client.get(key);
         if (value && value.toLowerCase().includes(lowerQuery)) {
           return { location: 'value' };
@@ -284,7 +282,6 @@ async function searchValueByType(
       }
 
       case 'list': {
-        // Requirement 7.11: Use LRANGE 0 99 for LIST values
         const elements = await client.lrange(key, 0, 99);
         for (let i = 0; i < elements.length; i++) {
           if (elements[i].toLowerCase().includes(lowerQuery)) {
@@ -295,7 +292,6 @@ async function searchValueByType(
       }
 
       case 'hash': {
-        // Requirement 7.12: Use HGETALL for HASH values
         const hash = await client.hgetall(key);
         for (const [field, value] of Object.entries(hash)) {
           if (field.toLowerCase().includes(lowerQuery)) {
@@ -309,7 +305,6 @@ async function searchValueByType(
       }
 
       case 'set': {
-        // Requirement 7.13: Use SMEMBERS for SET values (limit 100)
         const members = await client.smembers(key);
         const limitedMembers = members.slice(0, 100);
         for (const member of limitedMembers) {
@@ -321,7 +316,6 @@ async function searchValueByType(
       }
 
       case 'zset': {
-        // Requirement 7.14: Use ZRANGE 0 99 for ZSET values
         const members = await client.zrange(key, 0, 99);
         for (const member of members) {
           if (member.toLowerCase().includes(lowerQuery)) {

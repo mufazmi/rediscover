@@ -65,7 +65,6 @@ export function errorHandler(
   _next: NextFunction
 ): void {
   // Log error message and stack trace to console
-  // Requirement 34.3: Log error message and stack trace
   console.error('Error occurred:', {
     message: err.message,
     stack: err.stack,
@@ -77,7 +76,6 @@ export function errorHandler(
   let statusCode = 500;
   let errorMessage = err.message || 'Internal server error';
 
-  // Requirement 34.5-34.9: Map error types to status codes
   if (err instanceof ZodError) {
     // Zod validation errors → 400
     statusCode = 400;

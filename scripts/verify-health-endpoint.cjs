@@ -3,8 +3,6 @@
 /**
  * Health Endpoint Verification Script
  * 
- * Validates: Requirements 6.2
- * 
  * This script verifies that the backend health endpoint:
  * - Is properly configured and accessible
  * - Returns appropriate status information

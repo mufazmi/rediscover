@@ -13,7 +13,7 @@
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://hub.docker.com/r/mufazmi/rediscover)
 [![Redis](https://img.shields.io/badge/Redis-5.0%2B-red.svg)](https://redis.io)
-[![npm](https://img.shields.io/badge/npm-install-cb3837.svg)](https://www.npmjs.com/package/rediscover)
+[![npm](https://img.shields.io/badge/npm-install-cb3837.svg)](https://www.npmjs.com/package/@mufazmi/rediscover)
 
 <br/>
 
@@ -51,7 +51,7 @@ Get Rediscover running in under a minute:
 
 **NPM**
 ```bash
-npm install -g rediscover && rediscover
+npm install -g @mufazmi/rediscover && rediscover
 ```
 
 **Docker**
@@ -108,7 +108,7 @@ Then open **http://localhost:3000** in your browser. ✅
 
 ```bash
 # 1. Install globally
-npm install -g rediscover
+npm install -g @mufazmi/rediscover
 
 # 2. Verify installation
 rediscover --version
@@ -175,21 +175,19 @@ docker-compose up -d
 
 ---
 
-### Method 3 — Binary
-
-Download a pre-compiled binary from the [**Releases page**](https://github.com/mufazmi/rediscover/releases):
+zmi/rediscover/releases):
 
 | Platform | Binary |
 |---|---|
-| 🪟 Windows | `rediscover-windows-x64.exe` |
-| 🍎 macOS (Intel) | `rediscover-macos-x64` |
-| 🍎 macOS (Apple Silicon) | `rediscover-macos-arm64` |
-| 🐧 Linux | `rediscover-linux-x64` |
+| 🪟 Windows | `` |
+| 🍎 macOS (Intel) | `` |
+| 🍎 macOS (Apple Silicon) | `` |
+| 🐧 Linux | `` |
 
 ```bash
 # macOS / Linux — make executable and run
-chmod +x rediscover-linux-x64
-sudo mv rediscover-linux-x64 /usr/local/bin/rediscover
+chmod +x 
+sudo mv  /usr/local/bin/rediscover
 rediscover
 ```
 
@@ -279,7 +277,7 @@ mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
 echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc
 source ~/.bashrc
-npm install -g rediscover
+npm install -g @mufazmi/rediscover
 ```
 
 </details>
