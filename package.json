@@ -1,7 +1,7 @@
 {
   "name": "@mufazmi/rediscover",
   "private": false,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "description": "Self-hosted Redis management tool with a beautiful web interface",
   "bin": {

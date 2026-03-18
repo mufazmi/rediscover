@@ -1,6 +1,6 @@
 {
   "name": "rediscover-backend",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Self-hosted Node.js + Express backend for Rediscover",
   "main": "dist/server.js",
   "scripts": {
