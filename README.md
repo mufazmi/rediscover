@@ -3,26 +3,26 @@
 <img src="public/rediscover_banner.png" alt="Rediscover Banner" width="100%">
 
 <br/>
-<br/>
 
 # Rediscover
 
-**Self-hosted Redis management tool with a beautiful web interface**
+### A Self-Hosted Redis Management Tool with a Modern Web Interface
+
+<br/>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://hub.docker.com/r/mufazmi/rediscover)
 [![Redis](https://img.shields.io/badge/Redis-5.0%2B-red.svg)](https://redis.io)
-[![npm](https://img.shields.io/badge/npm-install-cb3837.svg)](https://www.npmjs.com/package/@mufazmi/rediscover)
+[![npm](https://img.shields.io/badge/npm-@mufazmi/rediscover-cb3837.svg)](https://www.npmjs.com/package/@mufazmi/rediscover)
 
 <br/>
 
-A modern, feature-rich Redis management application with real-time monitoring,  
-key management, and advanced operations — all from a clean, responsive web interface.
+Rediscover is a production-ready, self-hosted Redis management platform built for developers and teams who need real-time visibility, intuitive key management, and multi-instance control — all from a clean, responsive web interface.
 
 <br/>
 
-[**⚡ Quick Start**](#-quick-start) · [**📦 Installation**](#-installation) · [**⚙️ Configuration**](#️-configuration) · [**🔧 Troubleshooting**](#-troubleshooting) · [**📖 Docs**](https://github.com/mufazmi/rediscover/wiki)
+[**Live Demo**](#-live-demo) · [**Quick Start**](#-quick-start) · [**Installation**](#-installation) · [**Configuration**](#️-configuration) · [**Troubleshooting**](#-troubleshooting)
 
 <br/>
 
@@ -30,36 +30,56 @@ key management, and advanced operations — all from a clean, responsive web int
 
 ---
 
+## 🌐 Live Demo
+
+Experience Rediscover before installing — two live instances are available for you to explore:
+
+| Instance | URL |
+|---|---|
+| 🟢 Demo Server 1 | [rediscover.umairfarooqui.com](https://rediscover.umairfarooqui.com) |
+| 🟢 Demo Server 2 | [rediscover1.umairfarooqui.com](https://rediscover1.umairfarooqui.com) |
+
+**Demo Credentials** *(same for both instances)*
+
+```
+Username : admin
+Password : admin@123
+```
+
+> These demo environments are shared and reset periodically. Please do not store sensitive data.
+
+---
+
 ## ✨ Features
 
-| | Feature | Description |
-|---|---|---|
-| 📊 | **Real-time Monitoring** | Live stats, memory usage, and performance metrics via WebSocket |
-| 🗝️ | **Key Management** | Browse, search, edit, and delete keys across all Redis data types |
-| 🔐 | **Secure Authentication** | JWT-based auth with role-based access control |
-| 🌐 | **Multi-Connection** | Manage multiple Redis instances from a single interface |
-| 📱 | **Responsive Design** | Works on desktop, tablet, and mobile — built with Tailwind CSS + Radix UI |
-| ⚡ | **High Performance** | Optimized loading and caching for large-scale deployments |
-| 🎨 | **Modern UI** | Clean, intuitive interface — no clutter, no complexity |
-| 🔧 | **Easy Configuration** | Setup via environment variables or the built-in UI |
+| Feature | Description |
+|---|---|
+| 📊 **Real-time Monitoring** | Live stats, memory usage, and performance metrics streamed via WebSocket |
+| 🗝️ **Key Management** | Browse, search, create, edit, and delete keys across all Redis data types |
+| 🔐 **Secure Authentication** | JWT-based auth with role-based access control |
+| 🌐 **Multi-Connection** | Manage multiple Redis instances simultaneously from a single interface |
+| 📱 **Responsive Design** | Fully functional on desktop, tablet, and mobile — built with Tailwind CSS + Radix UI |
+| ⚡ **High Performance** | Optimized loading and caching for large-scale Redis deployments |
+| 🎨 **Modern UI** | Clean, distraction-free interface with thoughtful UX |
+| 🔧 **Flexible Configuration** | Configure via environment variables or directly through the built-in UI |
 
 ---
 
 ## ⚡ Quick Start
 
-Get Rediscover running in under a minute:
+Get up and running in under a minute:
 
-**NPM**
+**Via NPM**
 ```bash
 npm install -g @mufazmi/rediscover && rediscover
 ```
 
-**Docker**
+**Via Docker**
 ```bash
 docker run -d -p 3000:3000 -p 3001:3001 mufazmi/rediscover:latest
 ```
 
-Then open **http://localhost:3000** in your browser. ✅
+Open **http://localhost:3000** in your browser. ✅
 
 ---
 
@@ -70,8 +90,8 @@ Then open **http://localhost:3000** in your browser. ✅
 <table>
 <tr>
 <th>Method</th>
-<th>Requirement</th>
-<th>Version</th>
+<th>Dependency</th>
+<th>Minimum Version</th>
 </tr>
 <tr>
 <td rowspan="2"><b>NPM</b></td>
@@ -84,7 +104,7 @@ Then open **http://localhost:3000** in your browser. ✅
 </tr>
 <tr>
 <td rowspan="2"><b>Docker</b></td>
-<td>Docker</td>
+<td>Docker Engine</td>
 <td>≥ 20.10.0</td>
 </tr>
 <tr>
@@ -104,28 +124,32 @@ Then open **http://localhost:3000** in your browser. ✅
 
 ---
 
-### Method 1 — NPM *(Recommended)*
+### Option 1 — NPM *(Recommended)*
 
 ```bash
-# 1. Install globally
+# Install globally
 npm install -g @mufazmi/rediscover
 
-# 2. Verify installation
+# Verify installation
 rediscover --version
 
-# 3. Start the app
+# Launch the application
 rediscover
 ```
 
-Open **http://localhost:3000** — done.
+Then visit **http://localhost:3000**.
 
-> **Permission error?** Run: `npm config set prefix '~/.npm-global'` and add `~/.npm-global/bin` to your `PATH`.
+> **Tip:** If you encounter a permission error, run:
+> ```bash
+> npm config set prefix '~/.npm-global'
+> ```
+> Then add `~/.npm-global/bin` to your `PATH` and re-install.
 
 ---
 
-### Method 2 — Docker
+### Option 2 — Docker
 
-**Basic run:**
+**Basic usage:**
 ```bash
 docker run -d \
   --name rediscover \
@@ -134,7 +158,7 @@ docker run -d \
   mufazmi/rediscover:latest
 ```
 
-**With environment variables:**
+**With custom environment variables:**
 ```bash
 docker run -d \
   --name rediscover \
@@ -146,11 +170,12 @@ docker run -d \
   mufazmi/rediscover:latest
 ```
 
-**Docker Compose** *(recommended for production)*:
+**Docker Compose** *(recommended for production deployments)*:
 
 ```yaml
 # docker-compose.yml
 version: '3.8'
+
 services:
   rediscover:
     image: mufazmi/rediscover:latest
@@ -175,47 +200,29 @@ docker-compose up -d
 
 ---
 
-zmi/rediscover/releases):
-
-| Platform | Binary |
-|---|---|
-| 🪟 Windows | `` |
-| 🍎 macOS (Intel) | `` |
-| 🍎 macOS (Apple Silicon) | `` |
-| 🐧 Linux | `` |
-
-```bash
-# macOS / Linux — make executable and run
-chmod +x 
-sudo mv  /usr/local/bin/rediscover
-rediscover
-```
-
----
-
 ## ⚙️ Configuration
 
-Create a `.env` file in your working directory:
+Create a `.env` file in your working directory to customize Rediscover:
 
 ```env
-# ── Server ─────────────────────────────────
+# ── Server ─────────────────────────────────────────────────
 PORT=3000
 BACKEND_PORT=3001
 NODE_ENV=production
 HOST=0.0.0.0
 
-# ── Security ────────────────────────────────
-JWT_SECRET=your-very-secure-secret-key   # Required in production
+# ── Security ────────────────────────────────────────────────
+JWT_SECRET=your-very-secure-secret-key     # Required in production
 JWT_EXPIRATION=24h
 
-# ── Redis Connection ────────────────────────
+# ── Redis Connection ─────────────────────────────────────────
 REDIS_HOST=localhost
 REDIS_PORT=6379
 REDIS_PASSWORD=your-redis-password
 REDIS_TIMEOUT=5000
 REDIS_TLS=false
 
-# ── Application ─────────────────────────────
+# ── Application ──────────────────────────────────────────────
 MAX_CONNECTIONS=10
 SESSION_TIMEOUT=30
 REFRESH_INTERVAL=5
@@ -228,20 +235,20 @@ DEBUG=false
 |---|---|---|
 | `PORT` | `3000` | Web UI server port |
 | `BACKEND_PORT` | `3001` | Backend API server port |
-| `NODE_ENV` | `development` | `production` or `development` |
-| `HOST` | `localhost` | Bind address (`0.0.0.0` for all interfaces) |
-| `JWT_SECRET` | — | **Required in production.** JWT signing secret |
+| `NODE_ENV` | `development` | Runtime environment: `production` or `development` |
+| `HOST` | `localhost` | Bind address — use `0.0.0.0` to expose on all interfaces |
+| `JWT_SECRET` | — | **Required in production.** Secret key used to sign JWT tokens |
 | `JWT_EXPIRATION` | `24h` | Token lifetime (e.g. `1h`, `7d`, `24h`) |
-| `REDIS_HOST` | `localhost` | Default Redis hostname or IP |
+| `REDIS_HOST` | `localhost` | Default Redis hostname or IP address |
 | `REDIS_PORT` | `6379` | Default Redis port |
-| `REDIS_PASSWORD` | — | Redis AUTH password (if set) |
+| `REDIS_PASSWORD` | — | Redis AUTH password (leave blank if not set) |
 | `REDIS_TIMEOUT` | `5000` | Connection timeout in milliseconds |
-| `MAX_CONNECTIONS` | `10` | Max simultaneous Redis connections |
-| `REFRESH_INTERVAL` | `5` | Dashboard refresh rate in seconds |
-| `SESSION_TIMEOUT` | `30` | Session timeout in minutes |
+| `MAX_CONNECTIONS` | `10` | Maximum simultaneous Redis connections |
+| `REFRESH_INTERVAL` | `5` | Dashboard auto-refresh interval in seconds |
+| `SESSION_TIMEOUT` | `30` | Idle session timeout in minutes |
 | `DEBUG` | `false` | Enable verbose debug logging |
 
-> **Tip:** You can also configure Redis connections directly in the web UI — click **Add Connection** and enter your server details.
+> **Note:** You can also add and manage Redis connections directly from the web UI by clicking **Add Connection** and entering your server details.
 
 ---
 
@@ -251,7 +258,7 @@ DEBUG=false
 <summary><b>❌ "npm: command not found" or "node: command not found"</b></summary>
 <br>
 
-Node.js is not installed. Install it first:
+Node.js is not installed on your system. Install it using one of the methods below:
 
 ```bash
 # macOS
@@ -264,12 +271,12 @@ sudo apt install nodejs npm
 sudo yum install nodejs npm
 ```
 
-Or download directly from [nodejs.org](https://nodejs.org).
+Or download the official installer at [nodejs.org](https://nodejs.org).
 
 </details>
 
 <details>
-<summary><b>❌ "Permission denied" during npm install</b></summary>
+<summary><b>❌ "Permission denied" during npm global install</b></summary>
 <br>
 
 ```bash
@@ -283,15 +290,18 @@ npm install -g @mufazmi/rediscover
 </details>
 
 <details>
-<summary><b>❌ Port 3000 already in use</b></summary>
+<summary><b>❌ Port 3000 is already in use</b></summary>
 <br>
 
 ```bash
-# Kill process on port 3000
-sudo lsof -ti:3000 | xargs kill -9   # macOS / Linux
-netstat -ano | findstr :3000          # Windows (then taskkill /PID <PID> /F)
+# macOS / Linux — kill the process using the port
+sudo lsof -ti:3000 | xargs kill -9
 
-# Or use a different port
+# Windows — find and kill the process
+netstat -ano | findstr :3000
+# Then: taskkill /PID <PID> /F
+
+# Alternatively, run on a different port
 PORT=3005 rediscover
 ```
 
@@ -302,28 +312,28 @@ PORT=3005 rediscover
 <br>
 
 ```bash
-# Check if Redis is running
-redis-cli ping    # Should return: PONG
+# Verify Redis is running
+redis-cli ping   # Expected response: PONG
 
-# Install Redis if missing
-sudo apt install redis-server       # Ubuntu / Debian
+# Install Redis if not present
+sudo apt install redis-server          # Ubuntu / Debian
 brew install redis && brew services start redis   # macOS
-sudo yum install redis              # CentOS / RHEL
+sudo yum install redis                 # CentOS / RHEL
 ```
 
-Also check:
-- Redis port `6379` is open in your firewall
-- `bind` setting in `redis.conf` allows connections from your IP
+Also verify:
+- Port `6379` is open in your firewall rules
+- The `bind` directive in `redis.conf` permits connections from your host
 
 </details>
 
 <details>
-<summary><b>❌ "Authentication failed" to Redis</b></summary>
+<summary><b>❌ "Authentication failed" when connecting to Redis</b></summary>
 <br>
 
-- Verify the `requirepass` value in your `redis.conf`
-- Ensure `REDIS_PASSWORD` in your `.env` matches
-- Test with: `redis-cli -a your-password ping`
+- Check the `requirepass` directive in your `redis.conf`
+- Ensure `REDIS_PASSWORD` in your `.env` matches exactly
+- Test manually: `redis-cli -a your-password ping`
 
 </details>
 
@@ -333,20 +343,20 @@ Also check:
 
 ```bash
 sudo usermod -aG docker $USER
-newgrp docker   # Apply without logging out
+newgrp docker   # Apply group change without logging out
 ```
 
 </details>
 
 <details>
-<summary><b>❌ Container exits immediately</b></summary>
+<summary><b>❌ Container exits immediately after starting</b></summary>
 <br>
 
 ```bash
-# Inspect the logs
+# Inspect startup logs
 docker logs rediscover
 
-# Run interactively for debugging
+# Run interactively to debug
 docker run -it --rm -p 3000:3000 -p 3001:3001 mufazmi/rediscover:latest
 ```
 
@@ -358,10 +368,9 @@ docker run -it --rm -p 3000:3000 -p 3001:3001 mufazmi/rediscover:latest
 
 ```bash
 # Export inline
-export JWT_SECRET="your-secure-key"
-rediscover
+export JWT_SECRET="your-secure-key" && rediscover
 
-# Or add to .env
+# Or persist in .env
 echo 'JWT_SECRET=your-secure-key' >> .env
 ```
 
@@ -371,36 +380,36 @@ echo 'JWT_SECRET=your-secure-key' >> .env
 <summary><b>❌ Blank page or UI not loading</b></summary>
 <br>
 
-- Ensure JavaScript is enabled in your browser
-- Temporarily disable ad blockers
+- Confirm JavaScript is enabled in your browser
+- Temporarily disable browser extensions or ad blockers
 - Use a modern browser: Chrome 90+, Firefox 88+, Safari 14+
-- Open DevTools → Console to check for errors
+- Open **DevTools → Console** and look for JavaScript errors
 
 </details>
 
-**Enable debug mode** for detailed logs:
+**Enable debug mode** for detailed diagnostic logs:
 ```bash
 DEBUG=true rediscover
 ```
 
-Still stuck? [Open a GitHub Issue](https://github.com/mufazmi/rediscover/issues) with your OS, Node.js version, install method, and the full error message.
+Still stuck? [Open a GitHub Issue](https://github.com/mufazmi/rediscover/issues) with your OS, Node.js version, install method, and full error output.
 
 ---
 
-## 🛠️ Development
+## 🛠️ Local Development
 
 ```bash
-# Clone the repo
+# Clone the repository
 git clone https://github.com/mufazmi/rediscover.git
 cd rediscover
 
 # Install dependencies
 npm install
 
-# Start dev server
+# Start the development server
 npm run dev
 
-# Run tests
+# Run the test suite
 npm test
 
 # Build for production
@@ -411,15 +420,15 @@ npm run build
 
 ## 🤝 Contributing
 
-Contributions are welcome — bug fixes, features, and docs all appreciated.
+Contributions are welcome and appreciated — whether it's a bug fix, new feature, documentation improvement, or a question.
 
 1. Fork the repository
-2. Create your branch: `git checkout -b feature/your-feature`
-3. Commit your changes: `git commit -m 'Add your feature'`
-4. Push: `git push origin feature/your-feature`
+2. Create a feature branch: `git checkout -b feature/your-feature-name`
+3. Commit your changes: `git commit -m 'Add: your feature description'`
+4. Push to the branch: `git push origin feature/your-feature-name`
 5. Open a Pull Request
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting changes.
 
 ---
 
@@ -436,15 +445,15 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting.
 
 ### 🏆 Security Recognition
 
-Recognized for responsible disclosure by:
+Recognized by leading global organizations for responsible vulnerability disclosure:
 
-`NASA` · `Dell Technologies` · `Nokia` · `Lenovo` · `Zoom` · `LG` · `ABN AMRO Bank` · `Accenture` · `Paytm` · `U.S. Dept. of Homeland Security` · `WHO` · `United Airlines` · `Drexel University` · `Radboud University`
+`NASA` · `Dell Technologies` · `Nokia` · `Lenovo` · `Zoom` · `LG` · `ABN AMRO Bank` · `Accenture` · `Paytm` · `U.S. Department of Homeland Security` · `WHO` · `United Airlines` · `Drexel University` · `Radboud University`
 
 ---
 
 ## 📄 License
 
-Released under the [MIT License](LICENSE). Free to use, modify, and distribute.
+Released under the [MIT License](LICENSE). Free to use, modify, and distribute — attribution appreciated.
 
 ---
 
@@ -452,6 +461,6 @@ Released under the [MIT License](LICENSE). Free to use, modify, and distribute.
 
 **Made with ❤️ by [Umair Farooqui](https://github.com/mufazmi)**
 
-*If Rediscover saves you time, consider giving it a ⭐ on GitHub!*
+*If Rediscover saves you time, a ⭐ on GitHub goes a long way — thank you!*
 
-</div># rediscover
+</div>
